@@ -3,9 +3,9 @@ newGameBtn.addEventListener('click', newGame);
 var pickRock = document.getElementById('js-playerPick_rock'),
      pickPaper = document.getElementById('js-playerPick_paper'),
      pickScissors = document.getElementById('js-playerPick_scissors');
-pickRock.addEventListener('click', function() { playerPick('rock'), endOfGame() });
-pickPaper.addEventListener('click', function() { playerPick('paper'), endOfGame() });
-pickScissors.addEventListener('click', function() { playerPick('scissors'), endOfGame() });
+pickRock.addEventListener('click', function() { playerPick('rock')});
+pickPaper.addEventListener('click', function() { playerPick('paper')});
+pickScissors.addEventListener('click', function() { playerPick('scissors')});
 var gameState = 'notStarted',  //started // ended
     player = {
         name: '',
@@ -54,20 +54,29 @@ function newGame() {
     setGamePoints();
   }
 }
-var whoWinsText = '';
-function endOfGame(whoWinsText) {
-  if ((player.score > 9) || (computer.score > 9)) {
+var whoWinsText = 'fffff';
+function endOfGame() {
+  if (player.score > 9) {
     gameState = 'ended';
-    whoWins(computer.score, player.score);
-    alert("Oto rezultat:" + whoWinsText);
+ /*   whoWins(computer.score, player.score);*/
+    alert("Wygra³ gracz " + player.name);
     setGameElements();
     /*player.score = computer.score = 0;*/
     /*setTimeout(setGameElements(), 3000);*/
     console.log(gameState);
     console.log(whoWinsText);
-  }
+} else if (computer.score > 9) {
+   gameState = 'ended';
+ /*   whoWins(computer.score, player.score);*/
+    alert("Wygra³ komputer");
+    setGameElements();
+    /*player.score = computer.score = 0;*/
+    /*setTimeout(setGameElements(), 3000);*/
+    console.log(gameState);
+    console.log(whoWinsText);
 }
-function whoWins () {
+}
+/*function whoWins () {
      if (player.score === 10) {
          var whoWinsText = 'Koniec gry wygra³eœ!';
          }
@@ -76,7 +85,7 @@ function whoWins () {
        }
 return whoWinsText;
 console.log(whoWinsText);
-}
+}*/
 function getComputerPick() {
     var possiblePicks = ['rock', 'paper', 'scissors'];
     return possiblePicks[Math.floor(Math.random()*3)];
@@ -105,7 +114,8 @@ function checkRoundWinner(playerPick, computerPick) {
     }
 console.log(computer.score);
 console.log(player.score);
-setGamePoints()
+setGamePoints();
+endOfGame();
 }
 function playerPick(playerPick) {
     var computerPick = getComputerPick();
