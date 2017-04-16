@@ -69,11 +69,8 @@ function endOfGame() {
     console.log(whoWinsText);
 } else if (computer.score > 9) {
    gameState = 'ended';
- /*   whoWins(computer.score, player.score);*/
     alert("Wygra³ komputer");
     setGameElements();
-    /*player.score = computer.score = 0;*/
-    /*setTimeout(setGameElements(), 3000);*/
     console.log(gameState);
     console.log(whoWinsText);
   }
